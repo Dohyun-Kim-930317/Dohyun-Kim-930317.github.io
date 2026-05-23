@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>김도현 자기소개</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #68748a;
+      --primary: #1d4ed8;
+      --primary-dark: #173a8a;
+      --accent: #0f766e;
+      --line: #d9e2f1;
+      --shadow: 0 24px 60px rgba(23, 32, 51, 0.12);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(29, 78, 216, 0.16), transparent 34rem),
+        linear-gradient(135deg, #f8fbff 0%, var(--bg) 52%, #eef6f5 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      padding: 84px 0 64px;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: 60px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(15, 118, 110, 0.12);
+      filter: blur(6px);
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) 360px;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .profile-card,
+    .section-card {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(217, 226, 241, 0.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-card {
+      padding: 52px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 8px 14px;
+      color: var(--primary-dark);
+      background: #eaf1ff;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-description {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-color: transparent;
+      box-shadow: 0 14px 32px rgba(29, 78, 216, 0.28);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(23, 32, 51, 0.16);
+    }
+
+    .profile-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      display: grid;
+      place-items: center;
+      border-radius: 30px;
+      color: #ffffff;
+      background: linear-gradient(145deg, #1d4ed8, #0f766e);
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      box-shadow: 0 18px 38px rgba(15, 118, 110, 0.24);
+    }
+
+    .profile-card h2 {
+      margin: 18px 0 8px;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+    }
+
+    .profile-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .quick-facts {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-facts li {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .quick-facts strong {
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244, 247, 251, 0.84);
+      border-bottom: 1px solid rgba(217, 226, 241, 0.8);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 12px 0;
+    }
+
+    .nav a {
+      flex: 0 0 auto;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .nav a.active,
+    .nav a:hover {
+      color: var(--primary-dark);
+      background: #eaf1ff;
+    }
+
+    main {
+      padding: 54px 0 84px;
+    }
+
+    section {
+      scroll-margin-top: 86px;
+      margin-bottom: 28px;
+    }
+
+    .section-card {
+      padding: 36px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 38px);
+      letter-spacing: -0.05em;
+    }
+
+    .section-heading p {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat {
+      padding: 24px;
+      border-radius: 20px;
+      background: #f7faff;
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--primary);
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 22px 24px 22px 28px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #ffffff;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+      width: 5px;
+      border-radius: 999px;
+      background: linear-gradient(var(--primary), var(--accent));
+    }
+
+    .timeline-item:hover {
+      transform: translateX(4px);
+      border-color: rgba(29, 78, 216, 0.36);
+    }
+
+    .period {
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .timeline-item h3 {
+      margin: 6px 0 8px;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tag-list,
+    .filter-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag-list li,
+    .filter-button {
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: #eef6ff;
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .filter-button {
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .filter-button.active {
+      color: #ffffff;
+      background: var(--primary);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mini-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #ffffff;
+    }
+
+    .mini-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .education-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .education-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #f9fbff;
+      border: 1px solid var(--line);
+    }
+
+    .education-item time {
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .education-item h3 {
+      margin: 0 0 4px;
+      font-size: 18px;
+    }
+
+    .education-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 34px 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-grid,
+      .cards,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .section-card {
+        padding: 28px;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading p {
+        margin-top: 10px;
+      }
+
+      .education-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .hero-card,
+      .profile-card,
+      .section-card {
+        border-radius: 18px;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-card reveal">
+        <p class="eyebrow">Air Traffic Controller Portfolio</p>
+        <h1>안전을 설계하고 흐름을 읽는 항공교통관제사, 김도현입니다.</h1>
+        <p class="hero-description">
+          접근관제, 비행장관제, 항공정보, 항공교통 안전관리, 특수사용공역 위험도 평가까지 다양한 관제 현장을 경험하며
+          정확한 판단과 안정적인 운영 역량을 쌓아왔습니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#career">경력 보기</a>
+          <a class="button" href="#training">교육 이력 보기</a>
+        </div>
+      </div>
+
+      <aside class="profile-card reveal">
+        <div>
+          <div class="avatar" aria-label="김도현 이니셜">김</div>
+          <h2>김도현</h2>
+          <p>항공교통관제사 · 항공교통 안전관리 경험 보유</p>
+        </div>
+        <ul class="quick-facts">
+          <li><strong>전공</strong><span>한국항공대학교 항공교통</span></li>
+          <li><strong>학위</strong><span>이학사</span></li>
+          <li><strong>핵심 분야</strong><span>접근관제 · 비행장관제</span></li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="페이지 섹션 이동">
+    <div class="container nav-inner">
+      <a href="#about" class="active">소개</a>
+      <a href="#career">경력</a>
+      <a href="#licenses">자격</a>
+      <a href="#training">교육</a>
+      <a href="#education">학력</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="about" class="section-card reveal">
+      <div class="section-heading">
+        <h2>Profile</h2>
+        <p>항공교통 흐름을 안정적으로 관리하기 위해 현장 운용 능력과 절차 이해도를 함께 키워온 실무형 인재입니다.</p>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <strong>6+</strong>
+          <span>항공교통관제 실무 경력</span>
+        </div>
+        <div class="stat">
+          <strong>4</strong>
+          <span>주요 근무 및 담당 영역</span>
+        </div>
+        <div class="stat">
+          <strong>6</strong>
+          <span>전문 교육 및 직무훈련 수료</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="career" class="section-card reveal">
+      <div class="section-heading">
+        <h2>Career</h2>
+        <p>최근 이력부터 정리했습니다. 각 현장에서 관제 운용과 안전관리, 공역 관련 업무를 수행했습니다.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <span class="period">2025.05 - 2025.08</span>
+          <h3>인천공항관제탑 · 관제사</h3>
+          <p>비행장관제업무를 수행하며 공항 지상 및 비행장 교통 흐름의 안전한 운영을 담당했습니다.</p>
+        </article>
+        <article class="timeline-item">
+          <span class="period">2024.11 - 2025.04</span>
+          <h3>관제과 절차공역계 · 계원</h3>
+          <p>특수사용공역 위험도 평가 및 관리 업무를 담당하며 공역 운용의 안전성과 절차적 완성도를 높였습니다.</p>
+        </article>
+        <article class="timeline-item">
+          <span class="period">2022.11 - 2024.11</span>
+          <h3>양양공항관제탑 · 관제사</h3>
+          <p>비행장관제업무와 항공교통 안전관리업무를 병행하며 지역 공항 관제 운영 경험을 확장했습니다.</p>
+        </article>
+        <article class="timeline-item">
+          <span class="period">2019.02 - 2022.11</span>
+          <h3>서울접근관제소 · 관제사</h3>
+          <p>접근관제업무와 항공정보업무를 수행하며 복합적인 교통 흐름을 분석하고 조정하는 역량을 쌓았습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="licenses" class="section-card reveal">
+      <div class="section-heading">
+        <h2>Licenses & Strengths</h2>
+        <p>전문 자격과 실무 강점을 중심으로 정리했습니다.</p>
+      </div>
+      <div class="cards">
+        <div class="mini-card">
+          <h3>항공교통관제사</h3>
+          <p>한국교통안전공단 발급 자격을 보유하고 있으며 관제 실무를 기반으로 전문성을 축적했습니다.</p>
+        </div>
+        <div class="mini-card">
+          <h3>1종보통 자동차운전면허</h3>
+          <p>인천광역시경찰청 발급 면허를 보유하고 있습니다.</p>
+        </div>
+        <div class="mini-card">
+          <h3>운항 안전 중심 사고</h3>
+          <p>비행장관제, 접근관제, 안전관리 업무 경험을 바탕으로 위험요인을 구조적으로 파악합니다.</p>
+        </div>
+        <div class="mini-card">
+          <h3>절차와 공역 이해</h3>
+          <p>비행절차, 특수사용공역, 항공교통흐름관리 교육과 실무를 통해 절차 기반 업무 역량을 갖췄습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="training" class="section-card reveal">
+      <div class="section-heading">
+        <div>
+          <h2>Training</h2>
+          <p>버튼을 눌러 전체 교육 또는 분야별 교육을 확인할 수 있습니다.</p>
+        </div>
+        <ul class="filter-list" aria-label="교육 필터">
+          <li><button class="filter-button active" data-filter="all">전체</button></li>
+          <li><button class="filter-button" data-filter="control">관제</button></li>
+          <li><button class="filter-button" data-filter="safety">안전·공역</button></li>
+          <li><button class="filter-button" data-filter="flow">흐름관리</button></li>
+        </ul>
+      </div>
+      <div class="education-list">
+        <article class="education-item" data-category="flow">
+          <time>2025.06</time>
+          <div>
+            <h3>항공교통흐름관리(ATFM) 기본교육</h3>
+            <p>한국항공아카데미</p>
+          </div>
+        </article>
+        <article class="education-item" data-category="safety">
+          <time>2024.11 - 2024.12</time>
+          <div>
+            <h3>비행절차업무담당자 초기교육</h3>
+            <p>서울지방항공청 관제과</p>
+          </div>
+        </article>
+        <article class="education-item" data-category="safety">
+          <time>2024.02 - 2024.03</time>
+          <div>
+            <h3>항공교통안전관리자 초기·직무교육</h3>
+            <p>서울지방항공청 양양공항출장소</p>
+          </div>
+        </article>
+        <article class="education-item" data-category="control">
+          <time>2022.11 - 2022.12</time>
+          <div>
+            <h3>비행장관제 직무교육훈련</h3>
+            <p>서울지방항공청 양양공항출장소</p>
+          </div>
+        </article>
+        <article class="education-item" data-category="control">
+          <time>2019.06 - 2020.11</time>
+          <div>
+            <h3>접근관제 직무교육훈련</h3>
+            <p>인천·김포·서울·시계비행 / 서울지방항공청 관제과</p>
+          </div>
+        </article>
+        <article class="education-item" data-category="control">
+          <time>2018.12 - 2019.02</time>
+          <div>
+            <h3>항공교통관제사 초기교육훈련</h3>
+            <p>서울지방항공청 관제과</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="education" class="section-card reveal">
+      <div class="section-heading">
+        <h2>Education</h2>
+        <p>항공교통 전공을 기반으로 관제 분야의 전문성을 발전시켜 왔습니다.</p>
+      </div>
+      <div class="cards">
+        <div class="mini-card">
+          <h3>한국항공대학교</h3>
+          <p>항공교통 전공 · 이학사<br />2012.03 - 2018.08</p>
+        </div>
+        <div class="mini-card">
+          <h3>서울삼육고등학교</h3>
+          <p>문과 졸업<br />2009.03 - 2012.02</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 김도현. Resume-based personal introduction page.</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealElements = document.querySelectorAll(".reveal");
+    const navLinks = document.querySelectorAll(".nav a");
+    const sections = document.querySelectorAll("main section");
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const trainingItems = document.querySelectorAll(".education-item");
+
+    const revealObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    revealElements.forEach(element => revealObserver.observe(element));
+
+    const sectionObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          navLinks.forEach(link => {
+            link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
+          });
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px" }
+    );
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        filterButtons.forEach(item => item.classList.toggle("active", item === button));
+        trainingItems.forEach(item => {
+          const shouldShow = filter === "all" || item.dataset.category === filter;
+          item.style.display = shouldShow ? "grid" : "none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
